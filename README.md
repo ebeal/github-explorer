@@ -1,3 +1,40 @@
+# Github Repository Explorer
+The following are things I would add with additional time or have excluded for the sake of cleaner code:
+- Links to commits in github
+- A drop down to sort the repositories
+- Height animation when the list item expands to show commits
+- User login to show hidden repos or the repos by user rather than organization
+- Responsive styles to render the list on mobile better
+- More tests especially for RepoList and RepoListItem components
+
+## Notes:
+- I've tried to keep the components smaller but the app and repolistitem files could probably have their fetch functions refactored into a service.
+- If you find you are getting no results you may be hitting the github rate limit (90 an hour for unauthorized users)
+- The full commands are listed below in more detail from the create-react-app generator. You can run `npm install` and `npm start` then go to http://localhost:3000.
+- To run tests run `npm test`.
+- In addition to the default create-react-app libraries I'm also using @primer/octicons-react and dayjs for icons and date formatting respectively.
+
+## Manual Tests:
+### OrgSearch
+- If text is entered into input -> a network request is made
+
+### RepoList
+- If org doesn't return a valid response -> the text 'No repositories for this organization' shows as a list item
+- If org search has no text -> no list is rendered
+- If org search returns a list -> a list item is rendered per repository
+
+### RepoListItem
+- The following are rendered: repo name, open issue count, watchers, stargazers count, time from now a push was made
+- If the repo item is clicked -> if no commit list exists in the repo state -> show loading, make request for commits
+- If the repo item is clicked -> if commit list exits in the repo state -> no loading is shown, no request is made for commits
+- If the repo item is clicked -> when request is returned the commits are rendered
+
+### CommitItem
+- The following are rendered: commit message, commit authors name, time from now commit was made
+
+
+---
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
